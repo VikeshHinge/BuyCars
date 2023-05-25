@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const dealersSchema = mongoose.Schema({
+const usersSchema = mongoose.Schema({
     name:{type:String,required:true},
     avatar:{type:String},
     email:{type:String,required:true},
@@ -10,5 +10,5 @@ const dealersSchema = mongoose.Schema({
     type:{type:String}
 })
 
-const dealersModel = mongoose.model('dealers',dealersSchema)
-module.exports ={dealersModel}
+const usersModel = mongoose.model('users',usersSchema)
+module.exports ={usersModel}
