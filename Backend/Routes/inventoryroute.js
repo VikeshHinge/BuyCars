@@ -1,6 +1,7 @@
 const express = require('express');
 const {Inventorymodel} = require('../Model/inventory.model.js');
 const inventoryRouter = express.Router();
+const {dealerAuthantication} = require('../middleware/dealersMiddleware.js')
 
 
 inventoryRouter.get('/',async(req,res)=>{
@@ -14,9 +15,10 @@ inventoryRouter.get('/',async(req,res)=>{
     }
 })
 
-inventoryRouter.post('/addpost',async(req,res)=>{
+inventoryRouter.post('/addpost',dealerAuthantication,async(req,res)=>{
     let newdata = req.body;
-    res.send('POst')
+    console.log(newdata)
+    res.send(newdata)
 })
 
 inventoryRouter.patch('/updatepost',async(req,res)=>{

@@ -41,6 +41,7 @@ dealerRouter.post('/login',async(req,res)=>{
         bcrypt.compare(password, user[0].password, (err, result)=>{
             if(result){
                 let token = jwt.sign({ userId:user[0]._id }, 'buycars');
+        
                 res.send({msg:'User Login Sucess!','name':user[0].name,"token":token})
                 }
                 else if(err){

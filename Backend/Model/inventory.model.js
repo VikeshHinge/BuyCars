@@ -11,9 +11,20 @@ const inventorySchema = mongoose.Schema({
     colors:{type:Array,required:true},
     max_speed:{type:Number,required:true},
     img:{type:String,required:true},
-    bootspace:{type:String}
+    bootspace:{type:String},
+    km_odeometer:{type:Number,required:true},
+    major_scratches:{type:Array,required:true},
+    paint:{type:String,required:true},
+    accident_report:{type:Number,required:true},
+    pre_buyers:{type:Number,required:true},
+    location:{type:String,required:true},
+    images:{type:Array,required:true},
+    title:{type:String,required:true},
+    description:{type:String,required:true}
 });
 
-const Inventorymodel = mongoose.model('inventorymodel',inventorySchema)
+const Inventorymodel = mongoose.model('marketplace_Inventory',inventorySchema)
 
 module.exports={Inventorymodel}
+
+
