@@ -19,7 +19,7 @@ const Dealpage = () => {
 
     useEffect(()=>{
         const getData= async()=>{
-            let {data} = await axios.get('http://localhost:4040/inventory/deals')
+            let {data} = await axios.get('https://sore-pink-python-hose.cyclic.app/inventory/deals')
             console.log(data)
             setData(data)
         }

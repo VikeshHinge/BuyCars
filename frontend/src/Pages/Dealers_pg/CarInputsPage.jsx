@@ -25,7 +25,7 @@ const CarInputsPage = () => {
 
         const Getdata = async(params) =>{
             console.log(params)
-            let {data} = await axios.get(`http://localhost:4040/oem?_id=${params.id}`)
+            let {data} = await axios.get(`https://sore-pink-python-hose.cyclic.app/oem?_id=${params.id}`)
             console.log(data)
             setModel(data)
         }

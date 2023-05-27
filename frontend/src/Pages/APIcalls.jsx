@@ -4,7 +4,7 @@ export const UserSignup = async(data) => {
     console.log(data)
 
      try{
-        let res = await axios.post(`http://localhost:4040/${data.type}/register`)
+        let res = await axios.post(`https://sore-pink-python-hose.cyclic.app/${data.type}/register`)
         console.log(res)
      }
      catch(e){
@@ -19,6 +19,6 @@ export const UserLogin = async(data) => {
 
 export const PostData = async(data) =>{
     let config = { headers: {"authorization": localStorage.getItem('token') } }
-   let res = await axios.post('http://localhost:4040/inventory/addpost',data,config)
+   let res = await axios.post('https://sore-pink-python-hose.cyclic.app/inventory/addpost',data,config)
     
 }

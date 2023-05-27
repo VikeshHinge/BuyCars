@@ -27,7 +27,7 @@ const Signup = () => {
           let input = document.querySelector('#email').focus()
        }
      else {
-      const {data} = await axios.post(`http://localhost:4040/${type}/register`,auth)
+      const {data} = await axios.post(`https://sore-pink-python-hose.cyclic.app/${type}/register`,auth)
       if(data.msg){
        toast({
          title:data.msg,

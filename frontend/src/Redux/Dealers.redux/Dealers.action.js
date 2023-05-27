@@ -8,11 +8,11 @@ const DeleteCar = async(id)=> {
             "authorization": localStorage.getItem('token') 
         }
       }
-    let res = await axios.delete(`http://localhost:4040/inventory/postdelete${id}`,config)
+    let res = await axios.delete(`https://sore-pink-python-hose.cyclic.app/${id}`,config)
 }
 
 export const DeleteCarDeal =(id)=>(dispatch) => {
-    
+         console.log(id)
     try{
        //await DeleteCar(id)
        dispatch({type:GET_CAR_DELETE,payload:id})

@@ -15,8 +15,8 @@ const dispatch = useDispatch()
 useEffect(()=>{
   const getData= async()=>{
     let config = { headers: {"authorization": localStorage.getItem('token') } }
-     let{ data} = await axios.get(`http://localhost:4040/inventory`,config)
-     setData(data)
+     let{ data} = await axios.get(`https://sore-pink-python-hose.cyclic.app/inventory`,config)
+     setData(data)                 
   }
  getData()
 },[])

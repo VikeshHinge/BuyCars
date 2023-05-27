@@ -30,7 +30,7 @@ const Login = () => {
          return;
         }
       else{
-         const {data} = await axios.post(`http://localhost:4040/${type}/login`,auth)
+         const {data} = await axios.post(`https://sore-pink-python-hose.cyclic.app/${type}/login`,auth)
          if(data.msg){
       
           toast({
