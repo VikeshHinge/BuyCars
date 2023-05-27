@@ -6,14 +6,14 @@ import {Box,Flex,Input,Heading,Button,Text,
     FormErrorMessage,
     FormHelperText,
 } from '@chakra-ui/react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { UserSignup } from '../APIcalls';
 
 const Signup = () => {
 
     const [auth,setAuth] = useState({name:'',email:'',password:'',location:'',contact:'',type:'',avatar:''})
     const toast = useToast();
-
+    const Navigate = useNavigate()
 
      const handelChange = (e) =>{
        let{name,value} = e.target;
@@ -23,8 +23,14 @@ const Signup = () => {
      const handelsignup = async() => { 
       let {email,password,name,contact,type} = auth;
        if( password ===''|| name===''|| email ==="" ){
-           alert('put proper input')
-          let input = document.querySelector('#email').focus()
+        toast({
+          title:'Please fill the inputs !',
+          status: 'error',
+          duration: 2000,
+          position:'top',
+          isClosable: true,
+        })
+        
        }
      else {
       const {data} = await axios.post(`https://sore-pink-python-hose.cyclic.app/${type}/register`,auth)
@@ -38,6 +44,7 @@ const Signup = () => {
          isClosable: true,
        })
        setAuth({name:'',email:'',password:'',location:'',contact:'',type:'',avatar:''})
+       return Navigate('/login')
       }
      }}
 
