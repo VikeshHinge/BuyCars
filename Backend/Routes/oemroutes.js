@@ -4,6 +4,7 @@ const oemRouter = express.Router();
 
 oemRouter.get('/',async(req,res)=>{
     let query = req.query
+    console.log(query)
     try{
         const users = await OEMmodel.find(query)
         res.send(users)
@@ -12,6 +13,24 @@ oemRouter.get('/',async(req,res)=>{
         res.send({"err":err})
     }
 })
+
+//Search__________________________
+oemRouter.get('/search/:key',async(req,res)=>{
+     const number = req.params.key.match(/\d+/g)
+     
+     console.log(req.params.key,number)
+    try{
+     let data = await OEMmodel.find({
+         "$or":[
+             {'model':{$regex:req.params.key,$options:'i'}},
+             {'year':number},
+         ]
+     })
+     res.send(data)
+    }catch(err){
+     res.send({'msg':err.message})
+    }
+ })
 
 
 oemRouter.post('/addmodels',async(req,res)=>{

@@ -7,21 +7,21 @@ const bcrypt = require('bcrypt')
 
 //Register_________________________________________
 dealerRouter.post('/register',async(req,res)=>{
-    let {name,email,password,location,contact,avatar}=req.body
+    let {name,email,password,location,contact}=req.body
     
     try{
         let check = await dealersModel.find({email:email})
          if(check.length>0){
-            res.send({msg:"user already exist with this ID"})
+            res.send({msg:"dealer already exist with this ID"})
         }
         else{
             bcrypt.hash(password, 3, async(err, hash) => {
                if(err){
                 res.send({'msg':err.message},'user not able to register')
                }else{
-                let user = new dealersModel({name,email,password:hash,location,contact,avatar})
+                let user = new dealersModel({name,email,password:hash,location,contact})
                 await user.save()
-                res.send({'msg':'user register sucess !!!'})
+                res.send({'msg':'dealer register sucess !!!'})
                }
             })
         }
@@ -42,7 +42,7 @@ dealerRouter.post('/login',async(req,res)=>{
             if(result){
                 let token = jwt.sign({ userId:user[0]._id }, 'buycars');
         
-                res.send({msg:'User Login Sucess!','name':user[0].name,"token":token})
+                res.send({msg:'dealer Login Sucess!','name':user[0].name,"token":token})
                 }
                 else if(err){
                   console.log('wrong pw')

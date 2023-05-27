@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt')
 //Register_________________________________________
 userRouter.post('/register',async(req,res)=>{
     let {name,email,password,location,contact,avatar}=req.body
-    
+    console.log(req.body)
     try{
         let check = await usersModel.find({email:email})
          if(check.length>0){

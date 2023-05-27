@@ -8,14 +8,15 @@ const dealerAuthantication = (req,res,next) => {
     if(token){
        jwt.verify(token,'buycars',(err,decoded)=>{
         if(decoded){
-           req.body.user = decoded.userId
+           req.body.user = decoded.userId;
            next()
         }else{
             res.send({'err':err})
         }
+        
        })
     }else{
-        res.send({'sug':'Please Login for Cart !'})
+        res.send({'sug':'you are not autharized!'})
     }
 
 }
