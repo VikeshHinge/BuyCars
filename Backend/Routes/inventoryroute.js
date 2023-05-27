@@ -60,17 +60,30 @@ inventoryRouter.post('/addpost',dealerAuthantication,async(req,res)=>{
     }
 })
 
-inventoryRouter.patch('/updatepost',dealerAuthantication,async(req,res)=>{
-    let newdata = req.body;
-    res.send('PATCH')
+inventoryRouter.patch('/updatepost/:id',async(req,res)=>{
+    let id = req.params.id;
+    try{
+       let product = await Inventorymodel.findOneAndUpdate({_id:id},req.body)
+        res.send({msg:'product get Updated!'})
+    }catch(err){
+        res.send({error:err.message})
+    }
 })
 
 
-inventoryRouter.delete('/postdelete',dealerAuthantication,async(req,res)=>{
-    let newdata = req.body;
-    res.send('Delete')
-    //http://localhost:4040/inventory/addpost
+inventoryRouter.delete('/postdelete/:id',dealerAuthantication,async(req,res)=>{
+    let id = req.params.id
+    console.log(id)
+    console.log(req.body)
+    try{
+        await Inventorymodel.findOneAndDelete({_id:id})
+        res.send({msg:'product removed prom cart'})
+    }catch(err){
+        res.send({'err':err.message})
+    }
 })
+
+
 
 
 module.exports={inventoryRouter}
