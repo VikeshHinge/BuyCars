@@ -13,26 +13,17 @@ import {
 import axios from 'axios';
 import { PostData } from '../../APIcalls';
 
-// km_odeometer:{type:Number,required:true},
-// major_scratches:{type:Array,required:true},
-// paint:{type:String,required:true},
-// accident_report:{type:Number,required:true},
-// pre_buyers:{type:Number,required:true},
-// location:{type:String,required:true},
-// images:{type:Array,required:true},
-// title:{type:String,required:true},
-// description:{type:String,required:true}
 
 
 
 const CarInputs = ({model,oemID}) => {
+  const toast = useToast();
 const [cartinfo,setCarinfo] = useState({name:'',km_odeometer:'',major_scratches:'',
-paint:'',accident_report:'',pre_buyers:'',location:'',title:'',description:''})
+paint:'',accident_report:'',pre_buyers:'',location:'',title:'',description:'',mileage:''})
 
 const [Images,setImages] = useState([])
 const [imgPreview, setImgPreview] = useState([])
 const tost = useToast()
-
 
 const onDataChange = (e)=>{
   if(e.target.name === "images"){
@@ -41,9 +32,9 @@ const onDataChange = (e)=>{
 
     reader.onload=()=>{
       if(reader.readyState === 2){
-        console.log(reader.result);
+     
 
-        setImages((prev)=>[...prev, reader.result]) 
+        setImages((prev)=>[reader.result]) 
       }
     }
     reader.readAsDataURL(e.target.files[0])
@@ -52,29 +43,35 @@ const onDataChange = (e)=>{
   }else{
     setCarinfo((prev)=>({
       ...prev,
-      [e.target.name] : e.target.value,
-      ...model[0]
+      ...model[0],
+      [e.target.name] : e.target.value
     }))
   }
 }
 
-const handelSubmit = (event) => {
-   event.preventDefault()
+const handelSubmit = async() => {
+
+  let value = model[0].mileage.split(' ')
+
    const carObj = {
     ...cartinfo,
     images : Images,
-  
    }
    carObj['oemID']=oemID
-   console.log(carObj)
-  let res = PostData(carObj)
-  
+  let res =await PostData(carObj)
+
+  toast({
+    title: res,
+    status: 'success',
+    position:'top',
+    isClosable: true,
+  })
 }
 
   return (
   <Box w='80%' m='auto' mt='20px' bg='red.100' p='10px' borderRadius='10px' mb='40px'>
     <Text as='b' fontSize='2xl'>Add Car Information</Text>
-       <form action="" onSubmit={handelSubmit}>
+    
           <FormControl isRequired>
           <Table>
              <Thead>
@@ -103,6 +100,10 @@ const handelSubmit = (event) => {
                   <Td><Input onChange={onDataChange} name='paint' value={cartinfo.paint} border='1px solid' placeholder='paint of car' size='sm' /></Td>
                  </Tr>
                  <Tr>
+                  <Td>Mileage</Td>
+                  <Td><Input onChange={onDataChange} name='mileage' value={cartinfo.mileage} border='1px solid' placeholder='mileage- eg 20.3' size='sm' /></Td>
+                 </Tr>
+                 <Tr>
                   <Td>Any Accident</Td>
                   <Td><Input onChange={onDataChange} name='accident_report' value={cartinfo.accident_report} border='1px solid' placeholder='any major accident' size='sm' /></Td>
                  </Tr>
@@ -127,8 +128,8 @@ const handelSubmit = (event) => {
              </Tbody>
           </Table>
           </FormControl>
-          <Input m='30px' w='50%' type='submit' bg='red.300' fontWeight='bold' />
-       </form>
+          <Input m='30px' onClick={handelSubmit} w='50%' type='submit' bg='red.300' fontWeight='bold' />
+  
   </Box>
   )
 }

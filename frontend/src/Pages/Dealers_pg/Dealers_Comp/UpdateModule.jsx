@@ -73,6 +73,14 @@ const UpdateModule = ({ele,hadelUpdate}) => {
                   <Td><Input onChange={onDataChange} name='accident_report' value={data.accident_report} border='1px solid' placeholder='any major accident' size='sm' /></Td>
                  </Tr>
                  <Tr>
+                  <Td>Price</Td>
+                  <Td><Input onChange={onDataChange} name='list_price' value={data.list_price} border='1px solid' placeholder='Price' size='sm' /></Td>
+                 </Tr>
+                 <Tr>
+                  <Td>Mileage</Td>
+                  <Td><Input onChange={onDataChange} name='mileage' value={data.mileage} border='1px solid' placeholder='mileage' size='sm' /></Td>
+                 </Tr>
+                 <Tr>
                   <Td>Previous Buyers</Td>
                   <Td><Input onChange={onDataChange} name='pre_buyers' value={data.pre_buyers} border='1px solid' placeholder='buyers' size='sm' /></Td>
                  </Tr>
