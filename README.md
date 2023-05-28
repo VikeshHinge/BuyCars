@@ -6,7 +6,7 @@
  **html** |  **css** |  **chakra-ui** |  **ReactJs** |  **Redux** |  **ExpressJs** |  **MongoDB**  |  **mongoose** | **mongodb Atlas** | 
  
  # Dealers pages flow -
-   <img  src='https://i.ibb.co/pR5CwxY/Add-a-heading-1.png" alt="Add-a-heading-1' alt='home' />
+<img src="https://i.ibb.co/3zTDSss/Add-a-heading.png" alt="Add-a-heading" border="0">
    
  # Users pages flow -
 <img src="https://i.ibb.co/pR5CwxY/Add-a-heading-1.png" alt="Add-a-heading-1" border="0">
