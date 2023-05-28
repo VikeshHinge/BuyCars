@@ -9,7 +9,7 @@
    <img  src='https://i.ibb.co/pR5CwxY/Add-a-heading-1.png" alt="Add-a-heading-1' alt='home' />
    
  # Users pages flow -
- <img  src='https://i.ibb.co/BTSNKz8/Add-a-heading.png' alt='home' />
+<img src="https://i.ibb.co/pR5CwxY/Add-a-heading-1.png" alt="Add-a-heading-1" border="0">
  
   ## Features :
 
