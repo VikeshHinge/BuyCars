@@ -7,7 +7,20 @@ const cloudinary = require('cloudinary')
 
 inventoryRouter.get('/deals',async(req,res)=>{
     let query = req.query
+ 
+    if(query.list_price){
+    if(query.list_price===500001){
+        query.list_price={$gte:0,$lte:Number(query.list_price)}
+    }
+    else{
+        query.list_price={ $gt: 500000 }
+    }
+    }
 
+    if(query.mileage){
+        query.mileage={$gte:0,$lte:Number(query.mileage)}
+    }
+   console.log(query)
     try{
         const data = await Inventorymodel.find(query)
         res.send(data)
