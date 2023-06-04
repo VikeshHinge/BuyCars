@@ -3,7 +3,7 @@
  - Deployed Netlify link:- https://buycarprojrct.vercel.app/
 
  # Tech stacks used :
- **html** |  **css** |  **chakra-ui** |  **ReactJs** |  **Redux** |  **ExpressJs** |  **MongoDB**  |  **mongoose** | **mongodb Atlas** | 
+ **html** |  **css** |  **chakra-ui** |  **ReactJs** |  **Redux** |  **NodeJs** |  **ExpressJs** |  **MongoDB**  |  **mongoose** | **mongodb Atlas** | 
  
  # Dealers pages flow -
 <img src="https://i.ibb.co/3zTDSss/Add-a-heading.png" alt="Add-a-heading" border="0">
